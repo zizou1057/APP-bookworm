@@ -88,9 +88,11 @@ export const Pricing = () => {
                 { "border-2 border-secondary ring-4 ring-secondary/20": plan.isPopular }
               )}
             >
-              <CardHeader className="relative">
-                {plan.isPopular && <Badge className="absolute top-[-1.5rem] right-6" variant="secondary">Most Popular</Badge>}
-                <CardTitle>{plan.name}</CardTitle>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  {plan.name}
+                  {plan.isPopular && <Badge variant="secondary">Most Popular</Badge>}
+                </CardTitle>
                 <div className="text-4xl font-bold mt-4">
                   {isYearly ? plan.priceYearly : plan.priceMonthly}
                   <span className="text-lg font-normal text-muted-foreground">
