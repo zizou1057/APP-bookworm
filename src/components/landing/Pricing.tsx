@@ -24,8 +24,8 @@ const pricingPlans = [
   },
   {
     name: "Pro",
-    priceMonthly: "$9",
-    priceYearly: "$90",
+    priceMonthly: "$5",
+    priceYearly: "$54",
     description: "For avid readers who want to unlock their full reading potential.",
     features: [
       "Unlimited book tracking",
@@ -40,8 +40,8 @@ const pricingPlans = [
   },
   {
     name: "Team",
-    priceMonthly: "$25",
-    priceYearly: "$250",
+    priceMonthly: "$12",
+    priceYearly: "$129",
     description: "For book clubs and groups to read and grow together.",
     features: [
       "Everything in Pro, plus:",
@@ -97,6 +97,7 @@ export const Pricing = () => {
                   {isYearly ? plan.priceYearly : plan.priceMonthly}
                   <span className="text-lg font-normal text-muted-foreground">
                     {plan.name !== "Free" && (isYearly ? "/year" : "/month")}
+                    {plan.name === "Team" && " per user"}
                   </span>
                 </div>
                 <CardDescription className="mt-2 min-h-[40px]">{plan.description}</CardDescription>
