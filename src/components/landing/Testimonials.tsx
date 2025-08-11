@@ -135,8 +135,8 @@ export const Testimonials = () => {
             Read what our customers say
           </h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {testimonials.map((testimonial, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testimonials.slice(0, 9).map((testimonial, index) => (
             <Card key={index} className="bg-card text-card-foreground p-6 flex flex-col">
               <div className="flex-grow">
                 <Quote className="w-8 h-8 text-muted-foreground mb-4" />
