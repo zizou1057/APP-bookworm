@@ -73,7 +73,13 @@ export const Pricing = () => {
 
         <div className="flex justify-center items-center gap-4 mb-12">
           <Label htmlFor="billing-cycle">Monthly</Label>
-          <Switch id="billing-cycle" checked={isYearly} onCheckedChange={setIsYearly} aria-label="Toggle billing cycle" />
+          <Switch
+            id="billing-cycle"
+            checked={isYearly}
+            onCheckedChange={setIsYearly}
+            aria-label="Toggle billing cycle"
+            className="data-[state=checked]:bg-secondary"
+          />
           <Label htmlFor="billing-cycle">
             Yearly <Badge variant="secondary">Save 10%</Badge>
           </Label>
