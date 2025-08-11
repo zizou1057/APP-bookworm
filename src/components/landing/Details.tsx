@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -15,6 +16,7 @@ const detailsData = [
     image: "/placeholder.svg",
     imageAlt: "A collection of books on a shelf.",
     order: "reverse",
+    isAIPowered: true,
   },
   {
     title: "Visualize Your Reading Journey",
@@ -45,6 +47,9 @@ export const Details = () => {
               />
             </div>
             <div className="space-y-4 text-center md:text-left">
+              {detail.isAIPowered && (
+                <Badge variant="secondary">AI-Powered</Badge>
+              )}
               <h3 className="text-2xl font-bold">{detail.title}</h3>
               <p className="text-muted-foreground">{detail.description}</p>
               <Button variant="link" asChild className="px-0">
