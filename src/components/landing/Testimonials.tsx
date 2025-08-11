@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -127,6 +128,12 @@ const testimonials = [
 ];
 
 export const Testimonials = () => {
+  const [visibleCount, setVisibleCount] = useState(9);
+
+  const handleViewMore = () => {
+    setVisibleCount((prevCount) => prevCount + 9);
+  };
+
   return (
     <section className="py-12 md:py-24 bg-muted/50 dark:bg-muted/20">
       <div className="container mx-auto px-4 md:px-6">
@@ -136,7 +143,7 @@ export const Testimonials = () => {
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.slice(0, 9).map((testimonial, index) => (
+          {testimonials.slice(0, visibleCount).map((testimonial, index) => (
             <Card key={index} className="bg-card text-card-foreground p-6 flex flex-col">
               <div className="flex-grow">
                 <Quote className="w-8 h-8 text-muted-foreground mb-4" />
@@ -155,9 +162,13 @@ export const Testimonials = () => {
             </Card>
           ))}
         </div>
-        <div className="text-center mt-12">
-          <Button variant="outline">View More</Button>
-        </div>
+        {visibleCount < testimonials.length && (
+          <div className="text-center mt-12">
+            <Button variant="outline" onClick={handleViewMore}>
+              View More
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
