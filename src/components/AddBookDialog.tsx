@@ -29,12 +29,14 @@ import {
 import { supabase } from "@/lib/supabase";
 import { showError, showSuccess } from "@/utils/toast";
 import { useState } from "react";
+import { Textarea } from "./ui/textarea";
 
 const formSchema = z.object({
   title: z.string().min(1, { message: "Title is required." }),
   author: z.string().min(1, { message: "Author is required." }),
   status: z.enum(["to-read", "reading", "read"]),
   total_pages: z.coerce.number().positive({ message: "Pages must be a positive number." }).optional(),
+  notes: z.string().optional(),
 });
 
 interface AddBookDialogProps {
@@ -51,6 +53,7 @@ export const AddBookDialog = ({ open, onOpenChange, onBookAdded }: AddBookDialog
       title: "",
       author: "",
       status: "to-read",
+      notes: "",
     },
   });
 
@@ -148,6 +151,19 @@ export const AddBookDialog = ({ open, onOpenChange, onBookAdded }: AddBookDialog
                       <SelectItem value="read">Read</SelectItem>
                     </SelectContent>
                   </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="notes"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Notes</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="Add your personal notes about this book..." {...field} />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}

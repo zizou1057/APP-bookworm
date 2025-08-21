@@ -2,7 +2,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent }
 import { Badge } from "@/components/ui/badge";
 import { BookWithProgress } from "@/types";
 import { Progress } from "@/components/ui/progress";
-import { CalendarDays, Trash2, BookOpen } from "lucide-react";
+import { CalendarDays, Trash2, BookOpen, MessageSquare } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface BookCardProps {
@@ -80,9 +80,12 @@ export const BookCard = ({ book, onClick, onDelete }: BookCardProps) => {
       </CardContent>
       
       <CardFooter className="flex justify-between items-center">
-        <Badge variant={statusVariantMap[book.status] || 'outline'}>
-          {book.status.replace('-', ' ')}
-        </Badge>
+        <div className="flex items-center gap-2">
+          <Badge variant={statusVariantMap[book.status] || 'outline'}>
+            {book.status.replace('-', ' ')}
+          </Badge>
+          {book.notes && <MessageSquare className="h-4 w-4 text-muted-foreground" title="This book has notes" />}
+        </div>
         <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleDeleteClick}>
           <Trash2 className="h-4 w-4 text-destructive" />
         </Button>

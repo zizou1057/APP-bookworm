@@ -16,6 +16,7 @@ export interface Book {
   total_pages?: number;
   start_date?: string;
   end_date?: string;
+  notes?: string;
 }
 
 export interface BookWithProgress extends Book {

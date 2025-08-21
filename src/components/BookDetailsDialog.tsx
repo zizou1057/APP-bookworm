@@ -17,6 +17,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { Textarea } from "./ui/textarea";
 
 interface BookDetailsDialogProps {
   book: BookWithProgress | null;
@@ -35,6 +36,7 @@ const bookDetailsSchema = z.object({
   status: z.enum(["to-read", "reading", "read"]),
   start_date: z.string().optional(),
   end_date: z.string().optional(),
+  notes: z.string().optional(),
 });
 
 export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onDelete }: BookDetailsDialogProps) => {
@@ -92,6 +94,7 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
         status: book.status,
         start_date: book.start_date || '',
         end_date: book.end_date || '',
+        notes: book.notes || '',
       });
     }
   }, [open, book, detailsForm, logForm]);
@@ -127,6 +130,7 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
         status: values.status,
         start_date: values.start_date || null,
         end_date: values.end_date || null,
+        notes: values.notes || null,
       })
       .eq("id", book.id);
 
@@ -197,6 +201,19 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
                   />
                 )}
               </div>
+              <FormField
+                control={detailsForm.control}
+                name="notes"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Notes</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="Your thoughts, quotes, or summaries..." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <Button type="submit" className="w-full">Save Changes</Button>
             </form>
           </Form>
