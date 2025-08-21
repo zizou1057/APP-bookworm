@@ -6,8 +6,19 @@ import { User } from "@supabase/supabase-js";
 import { AddBookDialog } from "@/components/AddBookDialog";
 import { BookCard } from "@/components/BookCard";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Book, BookWithProgress, ReadingLog } from "@/types";
+import { Book, BookWithProgress } from "@/types";
 import { BookDetailsDialog } from "@/components/BookDetailsDialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { showError, showSuccess } from "@/utils/toast";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -17,6 +28,7 @@ const Dashboard = () => {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isDetailsDialogOpen, setIsDetailsDialogOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState<BookWithProgress | null>(null);
+  const [bookToDelete, setBookToDelete] = useState<BookWithProgress | null>(null);
 
   const fetchBooksAndProgress = useCallback(async () => {
     setLoading(true);
@@ -75,6 +87,25 @@ const Dashboard = () => {
     setIsDetailsDialogOpen(true);
   };
 
+  const handleDeleteRequest = (book: BookWithProgress) => {
+    setBookToDelete(book);
+  };
+
+  const confirmDelete = async () => {
+    if (!bookToDelete) return;
+
+    const { error } = await supabase.from("books").delete().eq("id", bookToDelete.id);
+
+    if (error) {
+      showError(error.message);
+    } else {
+      showSuccess(`"${bookToDelete.title}" was deleted.`);
+      fetchBooksAndProgress();
+    }
+    setBookToDelete(null);
+    setIsDetailsDialogOpen(false); // Close details dialog if open
+  };
+
   return (
     <>
       <AddBookDialog
@@ -82,17 +113,34 @@ const Dashboard = () => {
         onOpenChange={setIsAddDialogOpen}
         onBookAdded={fetchBooksAndProgress}
       />
-      <BookDetailsDialog
-        book={selectedBook}
-        open={isDetailsDialogOpen}
-        onOpenChange={setIsDetailsDialogOpen}
-        onBookUpdated={() => {
-          fetchBooksAndProgress();
-          // Also update the selected book to reflect changes immediately in the dialog
-          const updatedBook = books.find(b => b.id === selectedBook?.id);
-          if (updatedBook) setSelectedBook(updatedBook);
-        }}
-      />
+      {selectedBook && (
+        <BookDetailsDialog
+          book={selectedBook}
+          open={isDetailsDialogOpen}
+          onOpenChange={setIsDetailsDialogOpen}
+          onBookUpdated={() => {
+            fetchBooksAndProgress();
+            const updatedBook = books.find(b => b.id === selectedBook?.id);
+            if (updatedBook) setSelectedBook(updatedBook);
+          }}
+          onDelete={() => handleDeleteRequest(selectedBook)}
+        />
+      )}
+      <AlertDialog open={!!bookToDelete} onOpenChange={() => setBookToDelete(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete "{bookToDelete?.title}" and all of its reading logs.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmDelete}>Delete</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
       <header className="bg-primary text-primary-foreground">
         <div className="container mx-auto p-4 md:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
@@ -123,7 +171,12 @@ const Dashboard = () => {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {books.map((book) => (
-                <BookCard key={book.id} book={book} onClick={() => handleBookClick(book)} />
+                <BookCard 
+                  key={book.id} 
+                  book={book} 
+                  onClick={() => handleBookClick(book)}
+                  onDelete={() => handleDeleteRequest(book)}
+                />
               ))}
             </div>
           )}

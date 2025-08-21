@@ -23,6 +23,7 @@ interface BookDetailsDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onBookUpdated: () => void;
+  onDelete: () => void;
 }
 
 const logSchema = z.object({
@@ -36,7 +37,7 @@ const bookDetailsSchema = z.object({
   end_date: z.string().optional(),
 });
 
-export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated }: BookDetailsDialogProps) => {
+export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onDelete }: BookDetailsDialogProps) => {
   const [logs, setLogs] = useState<ReadingLog[]>([]);
   const [loadingLogs, setLoadingLogs] = useState(false);
 
@@ -82,7 +83,7 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated }: B
         end_date: book.end_date || '',
       });
     }
-  }, [open, book]);
+  }, [open, book, detailsForm, logForm]);
 
   async function onLogSubmit(values: z.infer<typeof logSchema>) {
     if (!book) return;
@@ -236,6 +237,9 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated }: B
             </div>
           </div>
         </div>
+        <DialogFooter>
+            <Button variant="destructive" onClick={onDelete}>Delete Book</Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

@@ -2,11 +2,13 @@ import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent }
 import { Badge } from "@/components/ui/badge";
 import { BookWithProgress } from "@/types";
 import { Progress } from "@/components/ui/progress";
-import { CalendarDays } from "lucide-react";
+import { CalendarDays, Trash2 } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface BookCardProps {
   book: BookWithProgress;
   onClick: () => void;
+  onDelete: () => void;
 }
 
 const statusVariantMap: { [key: string]: "default" | "secondary" | "outline" | "destructive" | null | undefined } = {
@@ -15,16 +17,28 @@ const statusVariantMap: { [key: string]: "default" | "secondary" | "outline" | "
   'to-read': 'outline',
 };
 
-export const BookCard = ({ book, onClick }: BookCardProps) => {
+export const BookCard = ({ book, onClick, onDelete }: BookCardProps) => {
   const progress = book.total_pages && book.totalPagesRead > 0
     ? (book.totalPagesRead / book.total_pages) * 100
     : 0;
 
+  const handleDeleteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onDelete();
+  };
+
   return (
     <Card onClick={onClick} className="cursor-pointer hover:shadow-lg transition-shadow flex flex-col h-full">
       <CardHeader>
-        <CardTitle className="truncate">{book.title}</CardTitle>
-        <CardDescription>{book.author}</CardDescription>
+        <div className="flex justify-between items-start gap-2">
+          <div className="flex-grow">
+            <CardTitle className="truncate">{book.title}</CardTitle>
+            <CardDescription>{book.author}</CardDescription>
+          </div>
+          <Button variant="ghost" size="icon" className="flex-shrink-0 h-8 w-8" onClick={handleDeleteClick}>
+            <Trash2 className="h-4 w-4 text-destructive" />
+          </Button>
+        </div>
       </CardHeader>
       
       <CardContent className="flex-grow">
