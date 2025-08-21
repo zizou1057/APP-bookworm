@@ -30,15 +30,8 @@ export const BookCard = ({ book, onClick, onDelete }: BookCardProps) => {
   return (
     <Card onClick={onClick} className="cursor-pointer hover:shadow-lg transition-shadow flex flex-col h-full">
       <CardHeader>
-        <div className="flex justify-between items-start gap-2">
-          <div className="flex-grow">
-            <CardTitle className="truncate">{book.title}</CardTitle>
-            <CardDescription>{book.author}</CardDescription>
-          </div>
-          <Button variant="ghost" size="icon" className="flex-shrink-0 h-8 w-8" onClick={handleDeleteClick}>
-            <Trash2 className="h-4 w-4 text-destructive" />
-          </Button>
-        </div>
+        <CardTitle className="truncate">{book.title}</CardTitle>
+        <CardDescription>{book.author}</CardDescription>
       </CardHeader>
       
       <CardContent className="flex-grow">
@@ -70,10 +63,13 @@ export const BookCard = ({ book, onClick, onDelete }: BookCardProps) => {
         )}
       </CardContent>
       
-      <CardFooter>
+      <CardFooter className="flex justify-between items-center">
         <Badge variant={statusVariantMap[book.status] || 'outline'}>
           {book.status.replace('-', ' ')}
         </Badge>
+        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleDeleteClick}>
+          <Trash2 className="h-4 w-4 text-destructive" />
+        </Button>
       </CardFooter>
     </Card>
   );
