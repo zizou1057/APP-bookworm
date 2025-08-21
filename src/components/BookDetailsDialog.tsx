@@ -17,6 +17,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { Progress } from "./ui/progress";
 
 interface BookDetailsDialogProps {
   book: BookWithProgress | null;
@@ -140,6 +141,11 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
 
   if (!book) return null;
 
+  const progress = book.total_pages && book.totalPagesRead > 0
+    ? (book.totalPagesRead / book.total_pages) * 100
+    : 0;
+  const pagesRemaining = book.total_pages ? book.total_pages - book.totalPagesRead : 0;
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
@@ -147,6 +153,23 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
           <DialogTitle>{book.title}</DialogTitle>
           <DialogDescription>{book.author}</DialogDescription>
         </DialogHeader>
+
+        {book.status === 'reading' && book.total_pages && (
+          <div className="space-y-2 p-4 border rounded-lg">
+            <div>
+              <div className="flex justify-between items-center mb-1 text-sm text-muted-foreground">
+                <span>Progress</span>
+                <span>{Math.round(progress)}%</span>
+              </div>
+              <Progress value={progress} />
+            </div>
+            <div className="text-sm text-muted-foreground flex justify-between">
+              <span>{book.totalPagesRead} / {book.total_pages} pages</span>
+              <span className="font-semibold text-foreground">{pagesRemaining} pages remaining</span>
+            </div>
+          </div>
+        )}
+
         <div className="space-y-6">
           {/* Edit Book Details Form */}
           <Form {...detailsForm}>
@@ -160,7 +183,7 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
                     <FormLabel>Status</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
-                        <SelectTrigger><SelectValue /></SelectTrigger>
+                        <SelectTrigger><SelectValue /></SelectValue>
                       </FormControl>
                       <SelectContent>
                         <SelectItem value="to-read">To Read</SelectItem>
