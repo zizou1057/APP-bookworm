@@ -20,7 +20,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { showError, showSuccess } from "@/utils/toast";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Book, Profile as ProfileType } from "@/types";
-import { BookOpen, BookCheck, BookPlus } from "lucide-react";
+import { BookOpen, BookCheck, BookPlus, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const profileFormSchema = z.object({
   first_name: z.string().optional(),
@@ -128,6 +129,14 @@ const Profile = () => {
   return (
     <div className="bg-muted/40 min-h-screen">
       <div className="container mx-auto p-4 md:p-8 max-w-2xl">
+        <div className="mb-4">
+          <Button asChild variant="outline">
+            <Link to="/dashboard">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Regresar a la biblioteca
+            </Link>
+          </Button>
+        </div>
         <Card>
           <CardHeader className="text-center">
             <div className="flex justify-center mb-4">
