@@ -164,7 +164,7 @@ const Dashboard = () => {
         </AlertDialogContent>
       </AlertDialog>
 
-      <header className="bg-[hsl(71_26%_33%)] text-[hsl(55_89%_94%)]">
+      <header className="bg-[#4a4e3a] text-[hsl(55_89%_94%)]">
         <div className="container mx-auto p-4 md:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
               <h1 className="text-3xl font-bold">My Library</h1>
