@@ -15,6 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
+import { Calendar, Trash2 } from "lucide-react";
 
 interface BookDetailsDialogProps {
   book: BookWithProgress | null;
@@ -119,14 +120,6 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated }: B
           <DialogTitle>{book.title}</DialogTitle>
           <DialogDescription>{book.author}</DialogDescription>
         </DialogHeader>
-        
-        {(book.start_date || book.end_date) && (
-          <div className="flex justify-between text-sm text-muted-foreground border-b pb-2">
-            {book.start_date && <span>Started: <strong>{new Date(book.start_date).toLocaleDateString()}</strong></span>}
-            {book.end_date && <span>Finished: <strong>{new Date(book.end_date).toLocaleDateString()}</strong></span>}
-          </div>
-        )}
-
         <div className="space-y-4">
           <div className="flex gap-2">
             {book.status === 'to-read' && <Button onClick={() => handleStatusChange('reading')}>Start Reading</Button>}
