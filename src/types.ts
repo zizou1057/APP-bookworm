@@ -1,3 +1,11 @@
+export interface ReadingLog {
+  id: string;
+  book_id: string;
+  date_read: string;
+  pages_read: number;
+  created_at: string;
+}
+
 export interface Book {
   id: string;
   user_id: string;
@@ -5,4 +13,11 @@ export interface Book {
   author: string;
   status: 'to-read' | 'reading' | 'read';
   created_at: string;
+  total_pages?: number;
+  start_date?: string;
+  end_date?: string;
+}
+
+export interface BookWithProgress extends Book {
+  totalPagesRead: number;
 }

@@ -34,6 +34,7 @@ const formSchema = z.object({
   title: z.string().min(1, { message: "Title is required." }),
   author: z.string().min(1, { message: "Author is required." }),
   status: z.enum(["to-read", "reading", "read"]),
+  total_pages: z.coerce.number().positive({ message: "Pages must be a positive number." }).optional(),
 });
 
 interface AddBookDialogProps {
@@ -111,6 +112,19 @@ export const AddBookDialog = ({ open, onOpenChange, onBookAdded }: AddBookDialog
                   <FormLabel>Author</FormLabel>
                   <FormControl>
                     <Input placeholder="F. Scott Fitzgerald" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="total_pages"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Total Pages</FormLabel>
+                  <FormControl>
+                    <Input type="number" placeholder="350" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
