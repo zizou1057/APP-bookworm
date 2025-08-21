@@ -20,21 +20,29 @@ export const BookCard = ({ book, onClick }: BookCardProps) => {
     : 0;
 
   return (
-    <Card onClick={onClick} className="cursor-pointer hover:shadow-lg transition-shadow">
+    <Card onClick={onClick} className="cursor-pointer hover:shadow-lg transition-shadow flex flex-col">
       <CardHeader>
         <CardTitle className="truncate">{book.title}</CardTitle>
         <CardDescription>{book.author}</CardDescription>
       </CardHeader>
-      {book.status === 'reading' && book.total_pages && (
-        <CardContent>
-          <div className="flex justify-between items-center mb-1 text-sm text-muted-foreground">
-            <span>Progress</span>
-            <span>{Math.round(progress)}%</span>
+      <CardContent className="flex-grow">
+        {book.status === 'reading' && book.total_pages && (
+          <div>
+            <div className="flex justify-between items-center mb-1 text-sm text-muted-foreground">
+              <span>Progress</span>
+              <span>{Math.round(progress)}%</span>
+            </div>
+            <Progress value={progress} />
+            <p className="text-xs text-right mt-1 text-muted-foreground">{book.totalPagesRead} / {book.total_pages} pages</p>
           </div>
-          <Progress value={progress} />
-          <p className="text-xs text-right mt-1 text-muted-foreground">{book.totalPagesRead} / {book.total_pages} pages</p>
-        </CardContent>
-      )}
+        )}
+        {book.status === 'read' && book.start_date && book.end_date && (
+          <div className="text-sm text-muted-foreground space-y-1">
+            <p><strong>Started:</strong> {new Date(book.start_date).toLocaleDateString()}</p>
+            <p><strong>Finished:</strong> {new Date(book.end_date).toLocaleDateString()}</p>
+          </div>
+        )}
+      </CardContent>
       <CardFooter>
         <Badge variant={statusVariantMap[book.status] || 'outline'}>
           {book.status.replace('-', ' ')}
