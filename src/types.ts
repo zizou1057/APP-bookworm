@@ -22,3 +22,12 @@ export interface Book {
 export interface BookWithProgress extends Book {
   totalPagesRead: number;
 }
+
+export interface Profile {
+  id: string;
+  updated_at?: string;
+  first_name?: string;
+  last_name?: string;
+  country?: string;
+  gender?: string;
+}
