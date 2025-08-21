@@ -2,7 +2,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent }
 import { Badge } from "@/components/ui/badge";
 import { BookWithProgress } from "@/types";
 import { Progress } from "@/components/ui/progress";
-import { CalendarDays, Trash2 } from "lucide-react";
+import { CalendarDays, Trash2, BookOpen } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface BookCardProps {
@@ -45,8 +45,24 @@ export const BookCard = ({ book, onClick, onDelete }: BookCardProps) => {
             <p className="text-xs text-right mt-1 text-muted-foreground">{book.totalPagesRead} / {book.total_pages} pages</p>
           </div>
         )}
-        {book.status === 'read' && (book.start_date || book.end_date) && (
+        
+        {book.status === 'to-read' && book.total_pages && (
+          <div className="text-sm text-muted-foreground pt-2">
+            <div className="flex items-center gap-2">
+              <BookOpen className="h-4 w-4 flex-shrink-0" />
+              <span>{book.total_pages} pages</span>
+            </div>
+          </div>
+        )}
+
+        {book.status === 'read' && (
           <div className="text-sm text-muted-foreground space-y-2 pt-2">
+            {book.total_pages && (
+              <div className="flex items-center gap-2">
+                <BookOpen className="h-4 w-4 flex-shrink-0" />
+                <span>{book.total_pages} pages</span>
+              </div>
+            )}
             {book.start_date && (
               <div className="flex items-center gap-2">
                 <CalendarDays className="h-4 w-4 flex-shrink-0" />
