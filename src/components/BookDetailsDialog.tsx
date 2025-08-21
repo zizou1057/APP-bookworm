@@ -53,6 +53,17 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
     resolver: zodResolver(bookDetailsSchema),
   });
 
+  const status = detailsForm.watch("status");
+
+  useEffect(() => {
+    if (status === 'reading') {
+      detailsForm.setValue('end_date', '');
+    } else if (status === 'to-read') {
+      detailsForm.setValue('start_date', '');
+      detailsForm.setValue('end_date', '');
+    }
+  }, [status, detailsForm]);
+
   const fetchLogs = async () => {
     if (!book) return;
     setLoadingLogs(true);
@@ -161,26 +172,30 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
                 )}
               />
               <div className="flex gap-2">
-                <FormField
-                  control={detailsForm.control}
-                  name="start_date"
-                  render={({ field }) => (
-                    <FormItem className="flex-grow">
-                      <FormLabel>Start Date</FormLabel>
-                      <FormControl><Input type="date" {...field} /></FormControl>
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={detailsForm.control}
-                  name="end_date"
-                  render={({ field }) => (
-                    <FormItem className="flex-grow">
-                      <FormLabel>End Date</FormLabel>
-                      <FormControl><Input type="date" {...field} /></FormControl>
-                    </FormItem>
-                  )}
-                />
+                {(status === 'reading' || status === 'read') && (
+                  <FormField
+                    control={detailsForm.control}
+                    name="start_date"
+                    render={({ field }) => (
+                      <FormItem className="flex-grow">
+                        <FormLabel>Start Date</FormLabel>
+                        <FormControl><Input type="date" {...field} /></FormControl>
+                      </FormItem>
+                    )}
+                  />
+                )}
+                {status === 'read' && (
+                  <FormField
+                    control={detailsForm.control}
+                    name="end_date"
+                    render={({ field }) => (
+                      <FormItem className="flex-grow">
+                        <FormLabel>End Date</FormLabel>
+                        <FormControl><Input type="date" {...field} /></FormControl>
+                      </FormItem>
+                    )}
+                  />
+                )}
               </div>
               <Button type="submit" className="w-full">Save Changes</Button>
             </form>
