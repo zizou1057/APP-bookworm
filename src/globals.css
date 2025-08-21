@@ -4,13 +4,13 @@
 
 @layer base {
   :root {
-    --background: 55 89% 94%; /* Barium Yellow */
+    --background: 0 0% 100%; /* White */
     --foreground: 81 29% 17%; /* Deep Green */
 
-    --card: 55 89% 94%;
+    --card: 0 0% 100%; /* White */
     --card-foreground: 81 29% 17%;
 
-    --popover: 55 89% 94%;
+    --popover: 0 0% 100%; /* White */
     --popover-foreground: 81 29% 17%;
 
     --primary: 71 26% 33%; /* Marine Green */

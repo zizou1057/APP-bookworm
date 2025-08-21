@@ -51,18 +51,19 @@ const Dashboard = () => {
         onOpenChange={setIsDialogOpen}
         onBookAdded={fetchBooks}
       />
-      <div className="container mx-auto p-4 md:p-8">
-        <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
-          <div>
-            <h1 className="text-3xl font-bold">My Library</h1>
-            <p className="text-sm text-muted-foreground">{user?.email}</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button onClick={() => setIsDialogOpen(true)}>Add Book</Button>
-            <Button onClick={handleLogout} variant="outline">Logout</Button>
-          </div>
-        </header>
-        <main>
+      <header className="bg-primary text-primary-foreground">
+        <div className="container mx-auto p-4 md:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+              <h1 className="text-3xl font-bold">My Library</h1>
+              <p className="text-sm text-primary-foreground/80">{user?.email}</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <Button onClick={() => setIsDialogOpen(true)} variant="secondary">Add Book</Button>
+              <Button onClick={handleLogout} variant="ghost" className="hover:bg-primary-foreground/20 hover:text-primary">Logout</Button>
+            </div>
+        </div>
+      </header>
+      <main className="container mx-auto p-4 md:p-8">
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {Array.from({ length: 4 }).map((_, i) => (
@@ -88,8 +89,7 @@ const Dashboard = () => {
               ))}
             </div>
           )}
-        </main>
-      </div>
+      </main>
     </>
   );
 };
