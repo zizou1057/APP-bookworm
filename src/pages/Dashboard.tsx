@@ -6,7 +6,7 @@ import { User } from "@supabase/supabase-js";
 import { AddBookDialog } from "@/components/AddBookDialog";
 import { BookCard } from "@/components/BookCard";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Book, BookWithProgress } from "@/types";
+import { Book, BookWithProgress, Profile } from "@/types";
 import { BookDetailsDialog } from "@/components/BookDetailsDialog";
 import {
   AlertDialog,
@@ -32,6 +32,7 @@ import { Settings, User as UserIcon, LogOut } from "lucide-react";
 const Dashboard = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
+  const [profile, setProfile] = useState<Profile | null>(null);
   const [books, setBooks] = useState<BookWithProgress[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
@@ -78,11 +79,24 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    const getUser = async () => {
+    const getUserAndProfile = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       setUser(user);
+
+      if (user) {
+        const { data: profileData } = await supabase
+          .from("profiles")
+          .select("first_name, last_name")
+          .eq("id", user.id)
+          .single();
+        
+        if (profileData) {
+          setProfile(profileData);
+        }
+      }
     };
-    getUser();
+    
+    getUserAndProfile();
     fetchBooksAndProgress();
   }, [fetchBooksAndProgress]);
 
@@ -154,7 +168,11 @@ const Dashboard = () => {
         <div className="container mx-auto p-4 md:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
               <h1 className="text-3xl font-bold">My Library</h1>
-              <p className="text-sm text-primary-foreground/80">{user?.email}</p>
+              <p className="text-sm text-primary-foreground/80">
+                {profile && (profile.first_name || profile.last_name)
+                  ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim()
+                  : user?.email}
+              </p>
             </div>
             <div className="flex items-center gap-4">
               <Button onClick={() => setIsAddDialogOpen(true)} variant="secondary">Add Book</Button>
