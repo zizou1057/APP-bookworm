@@ -21,8 +21,6 @@ export const BookCard = ({ book, onClick, onDelete }: BookCardProps) => {
   const progress = book.total_pages && book.totalPagesRead > 0
     ? (book.totalPagesRead / book.total_pages) * 100
     : 0;
-  
-  const pagesRemaining = book.total_pages ? book.total_pages - book.totalPagesRead : 0;
 
   const handleDeleteClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -38,18 +36,13 @@ export const BookCard = ({ book, onClick, onDelete }: BookCardProps) => {
       
       <CardContent className="flex-grow">
         {book.status === 'reading' && book.total_pages && (
-          <div className="space-y-2">
-            <div>
-              <div className="flex justify-between items-center mb-1 text-sm text-muted-foreground">
-                <span>Progress</span>
-                <span>{Math.round(progress)}%</span>
-              </div>
-              <Progress value={progress} />
+          <div>
+            <div className="flex justify-between items-center mb-1 text-sm text-muted-foreground">
+              <span>Progress</span>
+              <span>{Math.round(progress)}%</span>
             </div>
-            <div className="text-xs text-muted-foreground flex justify-between">
-              <span>{book.totalPagesRead} / {book.total_pages} pages</span>
-              <span className="font-medium">{pagesRemaining} pages remaining</span>
-            </div>
+            <Progress value={progress} />
+            <p className="text-xs text-right mt-1 text-muted-foreground">{book.totalPagesRead} / {book.total_pages} pages</p>
           </div>
         )}
         {book.status === 'read' && (book.start_date || book.end_date) && (
