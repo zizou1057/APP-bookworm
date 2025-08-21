@@ -13,7 +13,9 @@ export const Header = () => {
         <nav className="hidden md:flex gap-6 text-sm font-medium">
           <Link to="#features" className="hover:underline">Features</Link>
         </nav>
-        <Button>Get Started</Button>
+        <Button asChild>
+          <Link to="/signup">Get Started</Link>
+        </Button>
       </div>
     </header>
   );

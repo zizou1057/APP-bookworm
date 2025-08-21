@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (
@@ -11,7 +12,9 @@ export const Hero = () => {
           BookWorm helps you organize your reading life. Effortlessly manage your reading list, track your progress, and rediscover the joy of reading.
         </p>
         <div className="mt-6 flex gap-4 justify-center md:justify-start">
-          <Button size="lg">Get Started for Free</Button>
+          <Button size="lg" asChild>
+            <Link to="/signup">Get Started for Free</Link>
+          </Button>
           <Button size="lg" variant="outline">Learn More</Button>
         </div>
       </div>
