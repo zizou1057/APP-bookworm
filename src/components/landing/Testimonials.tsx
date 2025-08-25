@@ -128,10 +128,10 @@ const testimonials = [
 ];
 
 export const Testimonials = () => {
-  const [visibleCount, setVisibleCount] = useState(9);
+  const [visibleCount, setVisibleCount] = useState(6); // Cambiado de 9 a 6
 
   const handleViewMore = () => {
-    setVisibleCount((prevCount) => prevCount + 9);
+    setVisibleCount((prevCount) => prevCount + 6); // Carga 6 más cada vez
   };
 
   return (
