@@ -14,7 +14,7 @@ export const Header = () => {
           <Link to="#features" className="hover:underline">Features</Link>
         </nav>
         <Button asChild>
-          <Link to="/signup">Get Started</Link>
+          <Link to="/login">Iniciar Sesión</Link>
         </Button>
       </div>
     </header>
