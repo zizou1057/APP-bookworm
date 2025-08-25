@@ -11,7 +11,7 @@ export const Header = () => {
           <span>BookWorm</span>
         </Link>
         <nav className="hidden md:flex gap-6 text-sm font-medium">
-          <Link to="#features" className="hover:underline">Features</Link>
+          <a href="#features" className="hover:underline">Features</a>
         </nav>
         <Button asChild>
           <Link to="/login">Iniciar Sesión</Link>
