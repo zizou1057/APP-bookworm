@@ -146,12 +146,12 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md flex flex-col max-h-[90vh]"> {/* Added flex-col and max-h */}
         <DialogHeader>
           <DialogTitle>{book.title}</DialogTitle>
           <DialogDescription>{book.author}</DialogDescription>
         </DialogHeader>
-        <div className="space-y-6">
+        <div className="space-y-6 overflow-y-auto flex-grow pr-2"> {/* Added overflow-y-auto, flex-grow, and pr-2 for scrollbar */}
           {/* Edit Book Details Form */}
           <Form {...detailsForm}>
             <form onSubmit={detailsForm.handleSubmit(onDetailsSubmit)} className="p-4 border rounded-lg space-y-4">
@@ -269,7 +269,7 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
             </div>
           </div>
         </div>
-        <DialogFooter>
+        <DialogFooter className="mt-4"> {/* Added mt-4 for spacing */}
             <Button variant="destructive" onClick={onDelete}>Delete Book</Button>
         </DialogFooter>
       </DialogContent>
