@@ -1,37 +1,62 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Brain, Lightbulb, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
-const details = [
+const detailsData = [
   {
-    icon: <Lightbulb className="h-8 w-8 text-primary" />,
-    title: "Discover Your Next Favorite Book",
-    description: "Our intelligent recommendation engine learns your preferences and suggests books you'll love, helping you expand your literary horizons effortlessly.",
+    title: "Track Every Detail",
+    description: "Log your reading progress with precision. Note the page you're on, jot down thoughts as they come, and save those unforgettable quotes. BookWorm keeps all your reading notes organized.",
+    image: "/placeholder.svg",
+    imageAlt: "A person writing notes in a book.",
+    order: "default",
   },
   {
-    icon: <TrendingUp className="h-8 w-8 text-primary" />,
-    title: "Track Your Reading Progress",
-    description: "Monitor your reading habits with detailed statistics and visualizations. See your progress over time, identify trends, and celebrate your achievements.",
+    title: "Discover Your Next Favorite",
+    description: "Our smart recommendation engine helps you find books you'll love. Based on your reading history and favorite genres, we'll suggest hidden gems and popular new releases.",
+    image: "/placeholder.svg",
+    imageAlt: "A collection of books on a shelf.",
+    order: "reverse",
+    isAIPowered: true,
   },
   {
-    icon: <Brain className="h-8 w-8 text-primary" />,
-    title: "AI-Powered Summaries",
-    description: "Get concise, insightful summaries of books to quickly grasp key concepts or refresh your memory. Perfect for busy readers or when you need a quick recap.",
+    title: "Visualize Your Reading Journey",
+    description: "See your reading habits come to life with beautiful charts and stats. Track how many books you've read, your pace, and which genres you explore the most over time.",
+    image: "/placeholder.svg",
+    imageAlt: "A chart showing reading statistics.",
+    order: "default",
   },
 ];
 
 export const Details = () => {
   return (
-    <section id="details" className="container mx-auto px-4 md:px-6 py-12 md:py-24 bg-background rounded-lg shadow-lg">
-      <div className="grid gap-8 md:grid-cols-3">
-        {details.map((detail, index) => (
-          <Card key={index} className="flex flex-col items-center text-center p-6">
-            <CardContent className="flex flex-col items-center p-0">
-              {detail.icon}
-              <h3 className="text-2xl font-bold mt-4">{detail.title}</h3>
-              <p className="text-muted-foreground mt-2">{detail.description}</p>
-            </CardContent>
-          </Card>
+    <section className="container mx-auto px-4 md:px-6 py-12 md:py-24">
+      <div className="text-center mb-16">
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Amazing details, amazing books.</h2>
+        <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mt-4">
+          Every feature is designed to enrich your reading experience, from the smallest note to the biggest discovery.
+        </p>
+      </div>
+      <div className="space-y-16">
+        {detailsData.map((detail) => (
+          <div key={detail.title} className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className={`flex justify-center ${detail.order === 'reverse' ? 'md:order-last' : ''}`}>
+              <img
+                src={detail.image}
+                alt={detail.imageAlt}
+                className="rounded-lg shadow-xl w-full max-w-md"
+              />
+            </div>
+            <div className="space-y-4 text-center md:text-left">
+              {detail.isAIPowered && (
+                <Badge variant="secondary">AI-Powered</Badge>
+              )}
+              <h3 className="text-2xl font-bold">{detail.title}</h3>
+              <p className="text-muted-foreground">{detail.description}</p>
+              <Button variant="link" asChild className="px-0">
+                <Link to="#">Learn More</Link>
+              </Button>
+            </div>
+          </div>
         ))}
       </div>
     </section>
