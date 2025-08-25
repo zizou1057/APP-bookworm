@@ -13,19 +13,9 @@ const features = [
     description: "Organize your entire book collection. Create custom shelves, tag books by genre or mood, and easily see what you've read, what you're reading, and what's next.",
   },
   {
-    icon: <Bell className="h-8 w-8 text-primary" />,
-    title: "Custom Reading Reminders",
-    description: "Stay on track with your reading goals. Set customizable reminders to pick up your current book, get notified about new releases, or schedule your reading time.",
-  },
-  {
     icon: <BarChart className="h-8 w-8 text-primary" />,
     title: "Insightful Reading Analytics",
     description: "Visualize your reading habits. Get insights on your reading speed, favorite genres, and see your progress over time to stay motivated and discover new patterns.",
-  },
-  {
-    icon: <Users className="h-8 w-8 text-primary" />,
-    title: "Book Clubs & Discussions",
-    description: "Reading is better together. Create or join book clubs, share your thoughts and recommendations with friends, and discuss your favorite books in real-time.",
   },
   {
     icon: <Cloud className="h-8 w-8 text-primary" />,
