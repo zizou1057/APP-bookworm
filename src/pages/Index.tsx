@@ -1,7 +1,6 @@
 import { Header } from "@/components/landing/Header";
 import { Hero } from "@/components/landing/Hero";
 import { Features } from "@/components/landing/Features";
-import { Details } from "@/components/landing/Details";
 import { Pricing } from "@/components/landing/Pricing";
 import { Footer } from "@/components/landing/Footer";
 import { Testimonials } from "@/components/landing/Testimonials";
@@ -13,7 +12,6 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <Features />
-        <Details />
         <Testimonials />
         <Pricing />
       </main>
