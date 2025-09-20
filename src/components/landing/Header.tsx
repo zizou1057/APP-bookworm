@@ -12,6 +12,7 @@ export const Header = () => {
         </Link>
         <nav className="hidden md:flex gap-6 text-sm font-medium">
           <a href="#features" className="hover:underline">Features</a>
+          <a href="#testimonials" className="hover:underline">Reviews</a>
         </nav>
         <Button asChild>
           <Link to="/login">Iniciar Sesión</Link>
