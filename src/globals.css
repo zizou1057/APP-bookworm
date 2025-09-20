@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* White */
+    --foreground: 81 29% 17%; /* Deep Green */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 81 29% 17%;
+
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 81 29% 17%;
+
+    --primary: 71 26% 33%; /* Marine Green */
+    --primary-foreground: 55 89% 94%; /* Barium Yellow */
+
+    --secondary: 35 56% 62%; /* Sepia */
+    --secondary-foreground: 81 29% 17%; /* Deep Green */
+
+    --muted: 35 56% 90%; /* Lighter Sepia */
+    --muted-foreground: 81 29% 35%; /* Lighter Deep Green */
+
+    --accent: 29 55% 45%; /* Leather */
+    --accent-foreground: 55 89% 94%; /* Barium Yellow */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 55 89% 94%;
+
+    --border: 35 56% 85%; /* Light Sepia */
+    --input: 35 56% 85%; /* Light Sepia */
+    --ring: 71 26% 33%; /* Marine Green */
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 55 89% 97%;
+    --sidebar-foreground: 81 29% 17%;
+    --sidebar-primary: 71 26% 33%;
+    --sidebar-primary-foreground: 55 89% 94%;
+    --sidebar-accent: 35 56% 90%;
+    --sidebar-accent-foreground: 81 29% 17%;
+    --sidebar-border: 35 56% 85%;
+    --sidebar-ring: 71 26% 33%;
+  }
+
+  .dark {
+    --background: 81 29% 17%; /* Deep Green */
+    --foreground: 55 89% 94%; /* Barium Yellow */
+
+    --card: 81 29% 17%;
+    --card-foreground: 55 89% 94%;
+
+    --popover: 81 29% 17%;
+    --popover-foreground: 55 89% 94%;
+
+    --primary: 35 56% 62%; /* Sepia */
+    --primary-foreground: 81 29% 17%; /* Deep Green */
+
+    --secondary: 71 26% 33%; /* Marine Green */
+    --secondary-foreground: 55 89% 94%; /* Barium Yellow */
+
+    --muted: 81 29% 22%; /* Lighter Deep Green */
+    --muted-foreground: 55 89% 80%; /* Darker Barium Yellow */
+
+    --accent: 29 55% 45%; /* Leather */
+    --accent-foreground: 55 89% 94%; /* Barium Yellow */
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 55 89% 94%;
+
+    --border: 81 29% 25%; /* Lighter Deep Green */
+    --input: 81 29% 25%; /* Lighter Deep Green */
+    --ring: 35 56% 62%; /* Sepia */
+    
+    --sidebar-background: 81 29% 12%;
+    --sidebar-foreground: 55 89% 94%;
+    --sidebar-primary: 35 56% 62%;
+    --sidebar-primary-foreground: 81 29% 17%;
+    --sidebar-accent: 81 29% 17%;
+    --sidebar-accent-foreground: 55 89% 94%;
+    --sidebar-border: 81 29% 17%;
+    --sidebar-ring: 35 56% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
