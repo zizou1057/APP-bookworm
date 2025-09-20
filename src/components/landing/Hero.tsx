@@ -3,27 +3,31 @@ import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (
-    <section className="container mx-auto flex flex-col md:flex-row items-center gap-8 px-4 md:px-6 py-12 md:py-24 lg:py-32">
-      <div className="flex-1 text-center md:text-left">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
-          Never Lose Track of a Book Again
-        </h1>
-        <p className="mt-4 text-lg text-muted-foreground">
-          BookWorm helps you organize your reading life. Effortlessly manage your reading list, track your progress, and rediscover the joy of reading.
-        </p>
-        <div className="mt-6 flex gap-4 justify-center md:justify-start">
-          <Button size="lg" asChild>
-            <Link to="/signup">Get Started for Free</Link>
-          </Button>
-          <Button size="lg" variant="outline">Learn More</Button>
+    <section className="py-12 md:py-24 lg:py-32">
+      <div className="container mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div className="space-y-6 text-center md:text-left">
+          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+            Track Your Reading, Discover New Books
+          </h1>
+          <p className="text-lg text-muted-foreground">
+            BookWorm is the ultimate companion for book lovers. Organize your library, track your reading progress, and get personalized recommendations.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <Button size="lg" asChild>
+              <Link to="/login">Get Started</Link>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <a href="#features">Learn More</a>
+            </Button>
+          </div>
         </div>
-      </div>
-      <div className="flex-1 flex justify-center">
-        <img
-          src="/placeholder.svg"
-          alt="App Preview"
-          className="w-full max-w-md rounded-lg shadow-xl"
-        />
+        <div className="flex-1 flex justify-center">
+          <img
+            src="/hero-image.svg"
+            alt="A person reading a book"
+            className="max-w-sm md:max-w-md"
+          />
+        </div>
       </div>
     </section>
   );
