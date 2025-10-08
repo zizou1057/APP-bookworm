@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">APP-bookworm-main</string>
+    <string name="title_activity_main">APP-bookworm-main</string>
+    <string name="package_name">com.example.appbookwormmain</string>
+    <string name="custom_url_scheme">com.example.appbookwormmain</string>
+</resources>
