@@ -31,3 +31,10 @@ export interface Profile {
   country?: string;
   gender?: string;
 }
+
+export interface ReadingGoal {
+  user_id: string;
+  target_pages: number;
+  period: 'week' | 'month';
+  created_at: string;
+}

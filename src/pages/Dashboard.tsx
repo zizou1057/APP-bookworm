@@ -6,7 +6,7 @@ import { User } from "@supabase/supabase-js";
 import { AddBookDialog } from "@/components/AddBookDialog";
 import { BookCard } from "@/components/BookCard";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Book, BookWithProgress, Profile } from "@/types";
+import { Book, BookWithProgress, Profile, ReadingGoal } from "@/types";
 import { BookDetailsDialog } from "@/components/BookDetailsDialog";
 import {
   AlertDialog,
@@ -42,6 +42,8 @@ const Dashboard = () => {
   const [selectedBook, setSelectedBook] = useState<BookWithProgress | null>(null);
   const [bookToDelete, setBookToDelete] = useState<BookWithProgress | null>(null);
   const [isGoalDialogOpen, setIsGoalDialogOpen] = useState(false);
+  const [goal, setGoal] = useState<ReadingGoal | null>(null);
+  const [goalLoading, setGoalLoading] = useState(true);
 
   const fetchBooksAndProgress = useCallback(async () => {
     setLoading(true);
@@ -81,6 +83,28 @@ const Dashboard = () => {
     setLoading(false);
   }, []);
 
+  const fetchReadingGoal = useCallback(async () => {
+    setGoalLoading(true);
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+        setGoalLoading(false);
+        return;
+    };
+
+    const { data, error } = await supabase
+      .from("reading_goals")
+      .select("*")
+      .eq("user_id", user.id)
+      .single();
+
+    if (!error && data) {
+      setGoal(data as ReadingGoal);
+    } else {
+      setGoal(null);
+    }
+    setGoalLoading(false);
+  }, []);
+
   useEffect(() => {
     const getUserAndProfile = async () => {
       const { data: { user } } = await supabase.auth.getUser();
@@ -101,7 +125,8 @@ const Dashboard = () => {
     
     getUserAndProfile();
     fetchBooksAndProgress();
-  }, [fetchBooksAndProgress]);
+    fetchReadingGoal();
+  }, [fetchBooksAndProgress, fetchReadingGoal]);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -155,7 +180,7 @@ const Dashboard = () => {
       <ReadingGoalDialog
         open={isGoalDialogOpen}
         onOpenChange={setIsGoalDialogOpen}
-        onGoalSet={fetchBooksAndProgress}
+        onGoalSet={fetchReadingGoal}
       />
       <AlertDialog open={!!bookToDelete} onOpenChange={() => setBookToDelete(null)}>
         <AlertDialogContent>
@@ -219,7 +244,11 @@ const Dashboard = () => {
       </header>
       <main className="container mx-auto p-4 md:p-8">
         <div className="mb-6">
-          <ReadingGoalCard />
+          <ReadingGoalCard 
+            goal={goal} 
+            loading={goalLoading} 
+            onSetGoalClick={() => setIsGoalDialogOpen(true)}
+          />
         </div>
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

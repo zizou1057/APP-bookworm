@@ -1,41 +1,18 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Target, Calendar, BookOpen } from "lucide-react";
-import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { Target, Calendar, PlusCircle } from "lucide-react";
+import { ReadingGoal } from "@/types";
+import { Button } from "./ui/button";
 
-interface ReadingGoal {
-  target_pages: number;
-  period: string;
-  created_at: string;
+interface ReadingGoalCardProps {
+  goal: ReadingGoal | null;
+  loading: boolean;
+  onSetGoalClick: () => void;
 }
 
-export const ReadingGoalCard = () => {
-  const [goal, setGoal] = useState<ReadingGoal | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchReadingGoal();
-  }, []);
-
-  const fetchReadingGoal = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
-
-    const { data, error } = await supabase
-      .from("reading_goals")
-      .select("*")
-      .eq("user_id", user.id)
-      .single();
-
-    if (!error && data) {
-      setGoal(data);
-    }
-    setLoading(false);
-  };
-
+export const ReadingGoalCard = ({ goal, loading, onSetGoalClick }: ReadingGoalCardProps) => {
   if (loading) {
     return (
-      <Card className="bg-gradient-to-br from-primary/10 to-secondary/10">
+      <Card>
         <CardHeader>
           <div className="h-6 w-32 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
         </CardHeader>
@@ -48,11 +25,27 @@ export const ReadingGoalCard = () => {
   }
 
   if (!goal) {
-    return null;
+    return (
+      <Card className="border-dashed border-2 hover:border-primary/50 transition-colors">
+        <CardHeader className="flex-row items-center gap-4">
+          <Target className="h-8 w-8 text-muted-foreground" />
+          <div>
+            <CardTitle>Establece una Meta de Lectura</CardTitle>
+            <CardDescription>Mantente motivado estableciendo un objetivo semanal o mensual.</CardDescription>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <Button onClick={onSetGoalClick} className="w-full">
+            <PlusCircle className="mr-2 h-4 w-4" />
+            Establecer Meta
+          </Button>
+        </CardContent>
+      </Card>
+    );
   }
 
   const daysInPeriod = goal.period === "week" ? 7 : 30;
-  const pagesPerDay = Math.round(goal.target_pages / daysInPeriod);
+  const pagesPerDay = goal.target_pages > 0 && daysInPeriod > 0 ? Math.round(goal.target_pages / daysInPeriod) : 0;
 
   return (
     <Card className="bg-gradient-to-br from-primary/10 to-secondary/10 border-primary/20">
