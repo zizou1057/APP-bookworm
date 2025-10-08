@@ -27,7 +27,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Settings, User as UserIcon, LogOut } from "lucide-react";
+import { Settings, User as UserIcon, LogOut, Target } from "lucide-react";
+import { ReadingGoalDialog } from "@/components/ReadingGoalDialog";
+import { ReadingGoalCard } from "@/components/ReadingGoalCard";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -39,6 +41,7 @@ const Dashboard = () => {
   const [isDetailsDialogOpen, setIsDetailsDialogOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState<BookWithProgress | null>(null);
   const [bookToDelete, setBookToDelete] = useState<BookWithProgress | null>(null);
+  const [isGoalDialogOpen, setIsGoalDialogOpen] = useState(false);
 
   const fetchBooksAndProgress = useCallback(async () => {
     setLoading(true);
@@ -149,6 +152,11 @@ const Dashboard = () => {
           onDelete={() => handleDeleteRequest(selectedBook)}
         />
       )}
+      <ReadingGoalDialog
+        open={isGoalDialogOpen}
+        onOpenChange={setIsGoalDialogOpen}
+        onGoalSet={fetchBooksAndProgress}
+      />
       <AlertDialog open={!!bookToDelete} onOpenChange={() => setBookToDelete(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -175,6 +183,10 @@ const Dashboard = () => {
               </p>
             </div>
             <div className="flex items-center gap-4">
+              <Button onClick={() => setIsGoalDialogOpen(true)} variant="secondary" className="flex items-center gap-2">
+                <Target className="h-4 w-4" />
+                Metas de Lectura
+              </Button>
               <Button onClick={() => setIsAddDialogOpen(true)} variant="secondary">Añadir Libro</Button>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -206,6 +218,9 @@ const Dashboard = () => {
         </div>
       </header>
       <main className="container mx-auto p-4 md:p-8">
+        <div className="mb-6">
+          <ReadingGoalCard />
+        </div>
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {Array.from({ length: 4 }).map((_, i) => (
