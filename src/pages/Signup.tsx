@@ -40,7 +40,7 @@ const Signup = () => {
     if (error) {
       showError(error.message);
     } else {
-      showSuccess("Check your email for the confirmation link!");
+      showSuccess("¡Revisa tu correo para ver el enlace de confirmación!");
       navigate("/login");
     }
   }
@@ -49,8 +49,8 @@ const Signup = () => {
     <div className="flex items-center justify-center min-h-screen bg-background">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle>Sign Up</CardTitle>
-          <CardDescription>Create an account to start tracking your books.</CardDescription>
+          <CardTitle>Crear Cuenta</CardTitle>
+          <CardDescription>Crea una cuenta para empezar a registrar tus libros.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -62,7 +62,7 @@ const Signup = () => {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="you@example.com" {...field} />
+                      <Input placeholder="tu@ejemplo.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -73,7 +73,7 @@ const Signup = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>Contraseña</FormLabel>
                     <FormControl>
                       <Input type="password" placeholder="••••••••" {...field} />
                     </FormControl>
@@ -81,13 +81,13 @@ const Signup = () => {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">Sign Up</Button>
+              <Button type="submit" className="w-full">Crear Cuenta</Button>
             </form>
           </Form>
           <div className="mt-4 text-center text-sm">
-            Already have an account?{" "}
+            ¿Ya tienes una cuenta?{" "}
             <Link to="/login" className="underline">
-              Log in
+              Inicia sesión
             </Link>
           </div>
         </CardContent>

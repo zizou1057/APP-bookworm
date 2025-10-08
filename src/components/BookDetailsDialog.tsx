@@ -111,7 +111,7 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
     if (error) {
       showError(error.message);
     } else {
-      showSuccess("Progress logged!");
+      showSuccess("¡Progreso registrado!");
       logForm.reset({
         pages_read: undefined,
         date_read: new Date().toISOString().split('T')[0],
@@ -137,7 +137,7 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
     if (error) {
       showError(error.message);
     } else {
-      showSuccess("Book details updated!");
+      showSuccess("¡Detalles del libro actualizados!");
       onBookUpdated();
     }
   }
@@ -146,30 +146,30 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md flex flex-col max-h-[90vh]"> {/* Added flex-col and max-h */}
+      <DialogContent className="sm:max-w-md flex flex-col max-h-[90vh]">
         <DialogHeader>
           <DialogTitle>{book.title}</DialogTitle>
           <DialogDescription>{book.author}</DialogDescription>
         </DialogHeader>
-        <div className="space-y-6 overflow-y-auto flex-grow pr-2"> {/* Added overflow-y-auto, flex-grow, and pr-2 for scrollbar */}
+        <div className="space-y-6 overflow-y-auto flex-grow pr-2">
           {/* Edit Book Details Form */}
           <Form {...detailsForm}>
             <form onSubmit={detailsForm.handleSubmit(onDetailsSubmit)} className="p-4 border rounded-lg space-y-4">
-              <h4 className="font-semibold">Edit Details</h4>
+              <h4 className="font-semibold">Editar Detalles</h4>
               <FormField
                 control={detailsForm.control}
                 name="status"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Status</FormLabel>
+                    <FormLabel>Estado</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger><SelectValue /></SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="to-read">To Read</SelectItem>
-                        <SelectItem value="reading">Reading</SelectItem>
-                        <SelectItem value="read">Read</SelectItem>
+                        <SelectItem value="to-read">Por Leer</SelectItem>
+                        <SelectItem value="reading">Leyendo</SelectItem>
+                        <SelectItem value="read">Leído</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormItem>
@@ -182,7 +182,7 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
                     name="start_date"
                     render={({ field }) => (
                       <FormItem className="flex-grow">
-                        <FormLabel>Start Date</FormLabel>
+                        <FormLabel>Fecha de Inicio</FormLabel>
                         <FormControl><Input type="date" {...field} /></FormControl>
                       </FormItem>
                     )}
@@ -194,7 +194,7 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
                     name="end_date"
                     render={({ field }) => (
                       <FormItem className="flex-grow">
-                        <FormLabel>End Date</FormLabel>
+                        <FormLabel>Fecha de Fin</FormLabel>
                         <FormControl><Input type="date" {...field} /></FormControl>
                       </FormItem>
                     )}
@@ -206,15 +206,15 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
                 name="notes"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Notes</FormLabel>
+                    <FormLabel>Notas</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="Your thoughts, quotes, or summaries..." {...field} />
+                      <Textarea placeholder="Tus pensamientos, citas o resúmenes..." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">Save Changes</Button>
+              <Button type="submit" className="w-full">Guardar Cambios</Button>
             </form>
           </Form>
 
@@ -222,14 +222,14 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
           {book.status === 'reading' && (
             <Form {...logForm}>
               <form onSubmit={logForm.handleSubmit(onLogSubmit)} className="p-4 border rounded-lg space-y-4">
-                <h4 className="font-semibold">Log Your Progress</h4>
+                <h4 className="font-semibold">Registra Tu Progreso</h4>
                 <div className="flex gap-2">
                   <FormField
                     control={logForm.control}
                     name="pages_read"
                     render={({ field }) => (
                       <FormItem className="flex-grow">
-                        <FormLabel>Pages Read</FormLabel>
+                        <FormLabel>Páginas Leídas</FormLabel>
                         <FormControl><Input type="number" placeholder="50" {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
@@ -240,37 +240,37 @@ export const BookDetailsDialog = ({ book, open, onOpenChange, onBookUpdated, onD
                     name="date_read"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Date</FormLabel>
+                        <FormLabel>Fecha</FormLabel>
                         <FormControl><Input type="date" {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
                 </div>
-                <Button type="submit" className="w-full">Log</Button>
+                <Button type="submit" className="w-full">Registrar</Button>
               </form>
             </Form>
           )}
 
           {/* Reading History */}
           <div>
-            <h4 className="font-semibold mb-2">Reading History</h4>
+            <h4 className="font-semibold mb-2">Historial de Lectura</h4>
             <div className="max-h-48 overflow-y-auto space-y-2 pr-2">
-              {loadingLogs ? <p>Loading...</p> : logs.length > 0 ? (
+              {loadingLogs ? <p>Cargando...</p> : logs.length > 0 ? (
                 logs.map(log => (
                   <div key={log.id} className="flex justify-between items-center text-sm p-2 bg-muted/50 rounded-md">
-                    <span>Read <strong>{log.pages_read}</strong> pages</span>
+                    <span>Leídas <strong>{log.pages_read}</strong> páginas</span>
                     <span className="text-muted-foreground">{new Date(log.date_read).toLocaleDateString()}</span>
                   </div>
                 ))
               ) : (
-                <p className="text-sm text-muted-foreground text-center py-4">No reading history yet.</p>
+                <p className="text-sm text-muted-foreground text-center py-4">Aún no hay historial de lectura.</p>
               )}
             </div>
           </div>
         </div>
-        <DialogFooter className="mt-4"> {/* Added mt-4 for spacing */}
-            <Button variant="destructive" onClick={onDelete}>Delete Book</Button>
+        <DialogFooter className="mt-4">
+            <Button variant="destructive" onClick={onDelete}>Eliminar Libro</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

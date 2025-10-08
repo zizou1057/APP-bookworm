@@ -3,21 +3,21 @@ import { Button } from "@/components/ui/button";
 
 const detailsData = [
   {
-    title: "Track Every Detail",
-    description: "Log your reading progress with precision. Note the page you're on, jot down thoughts as they come, and save those unforgettable quotes. BookWorm keeps all your reading notes organized.",
+    title: "Registra Cada Detalle",
+    description: "Registra tu progreso de lectura con precisión. Anota la página en la que estás, escribe tus pensamientos a medida que surgen y guarda esas citas inolvidables. BookWorm mantiene todas tus notas de lectura organizadas.",
     image: "/placeholder.svg",
     reverse: false,
   },
   {
-    badge: "AI-Powered",
-    title: "Discover Your Next Favorite",
-    description: "Our smart recommendation engine helps you find books you'll love. Based on your reading history and favorite genres, we'll suggest hidden gems and popular new releases.",
+    badge: "Con tecnología IA",
+    title: "Descubre Tu Próximo Favorito",
+    description: "Nuestro motor de recomendación inteligente te ayuda a encontrar libros que te encantarán. Basándonos en tu historial de lectura y géneros favoritos, te sugeriremos joyas ocultas y nuevos lanzamientos populares.",
     image: "/placeholder.svg",
     reverse: true,
   },
   {
-    title: "Visualize Your Reading Journey",
-    description: "See your reading habits come to life with beautiful charts and stats. Track how many books you've read, your pace, and which genres you explore the most over time.",
+    title: "Visualiza Tu Viaje de Lectura",
+    description: "Observa cómo tus hábitos de lectura cobran vida con hermosos gráficos y estadísticas. Registra cuántos libros has leído, tu ritmo y qué géneros exploras más a lo largo del tiempo.",
     image: "/placeholder.svg",
     reverse: false,
   },
@@ -29,10 +29,10 @@ export const Details = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 md:mb-20">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            Amazing details, amazing books.
+            Detalles increíbles, libros asombrosos.
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed mt-4">
-            Every feature is designed to enrich your reading experience, from the smallest note to the biggest discovery.
+            Cada función está diseñada para enriquecer tu experiencia de lectura, desde la nota más pequeña hasta el mayor descubrimiento.
           </p>
         </div>
         <div className="space-y-16 md:space-y-24">
@@ -54,7 +54,7 @@ export const Details = () => {
                 {item.badge && <Badge variant="secondary">{item.badge}</Badge>}
                 <h3 className="text-2xl md:text-3xl font-bold">{item.title}</h3>
                 <p className="text-muted-foreground">{item.description}</p>
-                <Button variant="link" className="p-0 h-auto text-base">Learn More</Button>
+                <Button variant="link" className="p-0 h-auto text-base">Saber Más</Button>
               </div>
             </div>
           ))}

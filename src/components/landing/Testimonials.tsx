@@ -1,26 +1,26 @@
 const testimonialsData = [
   {
-    quote: "BookWorm has completely changed the way I read. Keeping track of my progress and notes has never been easier.",
+    quote: "BookWorm ha cambiado por completo mi forma de leer. Nunca ha sido tan fácil hacer un seguimiento de mi progreso y mis notas.",
     name: "Alex Johnson",
-    title: "Avid Reader",
+    title: "Lector Ávido",
     avatar: "/placeholder-user.jpg",
   },
   {
-    quote: "The AI recommendations are spot on! I've discovered so many new authors and genres I wouldn't have found otherwise.",
+    quote: "¡Las recomendaciones de la IA son perfectas! He descubierto muchísimos autores y géneros nuevos que no habría encontrado de otra manera.",
     name: "Samantha Lee",
-    title: "Book Club President",
+    title: "Presidenta del Club de Lectura",
     avatar: "/placeholder-user.jpg",
   },
   {
-    quote: "I love the community features. Discussing books with other readers adds a whole new layer to my reading experience.",
+    quote: "Me encantan las funciones de comunidad. Comentar libros con otros lectores añade una dimensión completamente nueva a mi experiencia de lectura.",
     name: "Michael Chen",
-    title: "Literature Student",
+    title: "Estudiante de Literatura",
     avatar: "/placeholder-user.jpg",
   },
   {
-    quote: "As a busy professional, BookWorm helps me make the most of my reading time. It's simple, intuitive, and powerful.",
+    quote: "Como profesional ocupado, BookWorm me ayuda a aprovechar al máximo mi tiempo de lectura. Es simple, intuitivo y potente.",
     name: "Jessica Williams",
-    title: "CEO, Tech Solutions",
+    title: "CEO, Soluciones Tecnológicas",
     avatar: "/placeholder-user.jpg",
   },
 ];
@@ -31,10 +31,10 @@ export const Testimonials = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            What Our Readers Are Saying
+            Lo que Dicen Nuestros Lectores
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed mt-4">
-            Join a community of passionate readers who are taking their reading to the next level.
+            Únete a una comunidad de lectores apasionados que están llevando su lectura al siguiente nivel.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">

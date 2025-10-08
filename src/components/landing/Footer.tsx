@@ -24,11 +24,11 @@ export const Footer = () => {
 
           {/* Column 2: Company Links */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-white">Company</h3>
+            <h3 className="font-semibold text-white">Compañía</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-white hover:underline">About BookWorm</a></li>
-              <li><a href="#features" className="hover:text-white hover:underline">Features</a></li>
-              <li><a href="#testimonials" className="hover:text-white hover:underline">Reviews</a></li>
+              <li><a href="#" className="hover:text-white hover:underline">Sobre BookWorm</a></li>
+              <li><a href="#features" className="hover:text-white hover:underline">Características</a></li>
+              <li><a href="#testimonials" className="hover:text-white hover:underline">Reseñas</a></li>
               <li><Link to="/login" className="hover:text-white hover:underline">Iniciar sesión</Link></li>
             </ul>
           </div>
@@ -37,25 +37,25 @@ export const Footer = () => {
           <div className="space-y-4">
             <h3 className="font-semibold text-white flex items-center gap-2">
               <Mail className="h-5 w-5" />
-              Stay up to date
+              Mantente al día
             </h3>
-            <p>Get the latest updates and special offers.</p>
+            <p>Recibe las últimas actualizaciones y ofertas especiales.</p>
             <form className="flex gap-2">
               <Input 
                 type="email" 
-                placeholder="Enter your email" 
+                placeholder="Ingresa tu correo electrónico" 
                 className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 focus:ring-secondary"
               />
-              <Button type="submit" variant="secondary">Sign Up</Button>
+              <Button type="submit" variant="secondary">Suscribirse</Button>
             </form>
           </div>
         </div>
 
         <div className="mt-12 border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-sm">
-          <p>© {new Date().getFullYear()} BookWorm. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} BookWorm. Todos los derechos reservados.</p>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <Link to="/privacy" className="hover:text-white hover:underline">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-white hover:underline">Terms of Service</Link>
+            <Link to="/privacy" className="hover:text-white hover:underline">Política de Privacidad</Link>
+            <Link to="/terms" className="hover:text-white hover:underline">Términos de Servicio</Link>
           </div>
         </div>
       </div>

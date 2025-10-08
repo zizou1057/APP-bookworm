@@ -122,7 +122,7 @@ const Dashboard = () => {
     if (error) {
       showError(error.message);
     } else {
-      showSuccess(`"${bookToDelete.title}" was deleted.`);
+      showSuccess(`"${bookToDelete.title}" fue eliminado.`);
       fetchBooksAndProgress();
     }
     setBookToDelete(null);
@@ -152,14 +152,14 @@ const Dashboard = () => {
       <AlertDialog open={!!bookToDelete} onOpenChange={() => setBookToDelete(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete "{bookToDelete?.title}" and all of its reading logs.
+              Esta acción no se puede deshacer. Esto eliminará permanentemente "{bookToDelete?.title}" y todos sus registros de lectura.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={confirmDelete}>Delete</AlertDialogAction>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmDelete}>Eliminar</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
@@ -167,7 +167,7 @@ const Dashboard = () => {
       <header className="bg-[#4a4e3a] text-[hsl(55_89%_94%)]">
         <div className="container mx-auto p-4 md:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              <h1 className="text-3xl font-bold">My Library</h1>
+              <h1 className="text-3xl font-bold">Mi Biblioteca</h1>
               <p className="text-sm text-[hsl(55_89%_94%)]/80">
                 {profile && (profile.first_name || profile.last_name)
                   ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim()
@@ -175,7 +175,7 @@ const Dashboard = () => {
               </p>
             </div>
             <div className="flex items-center gap-4">
-              <Button onClick={() => setIsAddDialogOpen(true)} variant="secondary">Add Book</Button>
+              <Button onClick={() => setIsAddDialogOpen(true)} variant="secondary">Añadir Libro</Button>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon" className="rounded-full h-10 w-10 hover:bg-primary-foreground/20">
@@ -183,22 +183,22 @@ const Dashboard = () => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
                     <Link to="/profile">
                       <UserIcon className="mr-2 h-4 w-4" />
-                      <span>Profile</span>
+                      <span>Perfil</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem disabled>
                     <Settings className="mr-2 h-4 w-4" />
-                    <span>Settings</span>
+                    <span>Configuración</span>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout}>
                     <LogOut className="mr-2 h-4 w-4" />
-                    <span>Log out</span>
+                    <span>Cerrar Sesión</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -216,9 +216,9 @@ const Dashboard = () => {
             </div>
           ) : books.length === 0 ? (
             <div className="text-center py-16 border-2 border-dashed rounded-lg">
-              <h2 className="text-xl font-semibold">Your library is empty</h2>
-              <p className="text-muted-foreground mt-2">Add your first book to get started.</p>
-              <Button className="mt-4" onClick={() => setIsAddDialogOpen(true)}>Add Book</Button>
+              <h2 className="text-xl font-semibold">Tu biblioteca está vacía</h2>
+              <p className="text-muted-foreground mt-2">Añade tu primer libro para comenzar.</p>
+              <Button className="mt-4" onClick={() => setIsAddDialogOpen(true)}>Añadir Libro</Button>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

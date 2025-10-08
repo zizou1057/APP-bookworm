@@ -75,7 +75,7 @@ export const AddBookDialog = ({ open, onOpenChange, onBookAdded }: AddBookDialog
     if (error) {
       showError(error.message);
     } else {
-      showSuccess("Book added successfully!");
+      showSuccess("¡Libro añadido con éxito!");
       onBookAdded();
       form.reset();
       onOpenChange(false);
@@ -87,9 +87,9 @@ export const AddBookDialog = ({ open, onOpenChange, onBookAdded }: AddBookDialog
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add a New Book</DialogTitle>
+          <DialogTitle>Añadir un Nuevo Libro</DialogTitle>
           <DialogDescription>
-            Fill in the details of the book you want to add to your library.
+            Completa los detalles del libro que quieres añadir a tu biblioteca.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -99,9 +99,9 @@ export const AddBookDialog = ({ open, onOpenChange, onBookAdded }: AddBookDialog
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Title</FormLabel>
+                  <FormLabel>Título</FormLabel>
                   <FormControl>
-                    <Input placeholder="The Great Gatsby" {...field} />
+                    <Input placeholder="El Gran Gatsby" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -112,7 +112,7 @@ export const AddBookDialog = ({ open, onOpenChange, onBookAdded }: AddBookDialog
               name="author"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Author</FormLabel>
+                  <FormLabel>Autor</FormLabel>
                   <FormControl>
                     <Input placeholder="F. Scott Fitzgerald" {...field} />
                   </FormControl>
@@ -125,7 +125,7 @@ export const AddBookDialog = ({ open, onOpenChange, onBookAdded }: AddBookDialog
               name="total_pages"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Total Pages</FormLabel>
+                  <FormLabel>Páginas Totales</FormLabel>
                   <FormControl>
                     <Input type="number" placeholder="350" {...field} />
                   </FormControl>
@@ -138,17 +138,17 @@ export const AddBookDialog = ({ open, onOpenChange, onBookAdded }: AddBookDialog
               name="status"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Status</FormLabel>
+                  <FormLabel>Estado</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a status" />
+                        <SelectValue placeholder="Selecciona un estado" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="to-read">To Read</SelectItem>
-                      <SelectItem value="reading">Reading</SelectItem>
-                      <SelectItem value="read">Read</SelectItem>
+                      <SelectItem value="to-read">Por Leer</SelectItem>
+                      <SelectItem value="reading">Leyendo</SelectItem>
+                      <SelectItem value="read">Leído</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -160,9 +160,9 @@ export const AddBookDialog = ({ open, onOpenChange, onBookAdded }: AddBookDialog
               name="notes"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Notes</FormLabel>
+                  <FormLabel>Notas</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Add your personal notes about this book..." {...field} />
+                    <Textarea placeholder="Añade tus notas personales sobre este libro..." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -170,7 +170,7 @@ export const AddBookDialog = ({ open, onOpenChange, onBookAdded }: AddBookDialog
             />
             <DialogFooter>
               <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Adding..." : "Add Book"}
+                {isSubmitting ? "Añadiendo..." : "Añadir Libro"}
               </Button>
             </DialogFooter>
           </form>

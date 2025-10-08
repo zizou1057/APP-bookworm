@@ -7,15 +7,15 @@ export const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 text-center">
         <div className="max-w-3xl mx-auto space-y-6">
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-            Unlock a World of Stories with BookWorm
+            Desbloquea un Mundo de Historias con BookWorm
           </h1>
           <p className="text-lg text-muted-foreground md:text-xl">
-            Your personal reading companion. Track your progress, discover new books, and connect with a community of readers.
+            Tu compañero de lectura personal. Registra tu progreso, descubre nuevos libros y conecta con una comunidad de lectores.
           </p>
         </div>
         <div className="mt-8 flex justify-center gap-4">
           <Button size="lg" asChild>
-            <Link to="/login">Get Started for Free</Link>
+            <Link to="/login">Comienza Gratis</Link>
           </Button>
         </div>
       </div>

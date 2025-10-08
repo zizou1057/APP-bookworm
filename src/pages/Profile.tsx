@@ -105,7 +105,7 @@ const Profile = () => {
     if (error) {
       showError(error.message);
     } else {
-      showSuccess("Profile updated successfully!");
+      showSuccess("¡Perfil actualizado con éxito!");
     }
   }
 
@@ -145,8 +145,8 @@ const Profile = () => {
                 <AvatarFallback>{getInitials()}</AvatarFallback>
               </Avatar>
             </div>
-            <CardTitle className="text-2xl">{profile?.first_name || 'User'} Profile</CardTitle>
-            <CardDescription>View and edit your personal information.</CardDescription>
+            <CardTitle className="text-2xl">Perfil de {profile?.first_name || 'Usuario'}</CardTitle>
+            <CardDescription>Ve y edita tu información personal.</CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>

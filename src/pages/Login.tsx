@@ -48,8 +48,8 @@ const Login = () => {
     <div className="flex items-center justify-center min-h-screen bg-background">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle>Log In</CardTitle>
-          <CardDescription>Welcome back! Log in to see your library.</CardDescription>
+          <CardTitle>Iniciar Sesión</CardTitle>
+          <CardDescription>¡Bienvenido de nuevo! Inicia sesión para ver tu biblioteca.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -61,7 +61,7 @@ const Login = () => {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="you@example.com" {...field} />
+                      <Input placeholder="tu@ejemplo.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -72,7 +72,7 @@ const Login = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>Contraseña</FormLabel>
                     <FormControl>
                       <Input type="password" placeholder="••••••••" {...field} />
                     </FormControl>
@@ -80,13 +80,13 @@ const Login = () => {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">Log In</Button>
+              <Button type="submit" className="w-full">Iniciar Sesión</Button>
             </form>
           </Form>
           <div className="mt-4 text-center text-sm">
-            Don't have an account?{" "}
+            ¿No tienes una cuenta?{" "}
             <Link to="/signup" className="underline">
-              Sign up
+              Regístrate
             </Link>
           </div>
         </CardContent>

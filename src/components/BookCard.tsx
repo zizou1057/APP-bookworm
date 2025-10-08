@@ -17,6 +17,12 @@ const statusVariantMap: { [key: string]: "default" | "secondary" | "outline" | "
   'to-read': 'outline',
 };
 
+const statusTextMap: { [key: string]: string } = {
+  'read': 'Leído',
+  'reading': 'Leyendo',
+  'to-read': 'Por leer',
+};
+
 export const BookCard = ({ book, onClick, onDelete }: BookCardProps) => {
   const progress = book.total_pages && book.totalPagesRead > 0
     ? (book.totalPagesRead / book.total_pages) * 100
@@ -38,11 +44,11 @@ export const BookCard = ({ book, onClick, onDelete }: BookCardProps) => {
         {book.status === 'reading' && book.total_pages && (
           <div>
             <div className="flex justify-between items-center mb-1 text-sm text-muted-foreground">
-              <span>Progress</span>
+              <span>Progreso</span>
               <span>{Math.round(progress)}%</span>
             </div>
             <Progress value={progress} />
-            <p className="text-xs text-right mt-1 text-muted-foreground">{book.totalPagesRead} / {book.total_pages} pages</p>
+            <p className="text-xs text-right mt-1 text-muted-foreground">{book.totalPagesRead} / {book.total_pages} páginas</p>
           </div>
         )}
         
@@ -50,7 +56,7 @@ export const BookCard = ({ book, onClick, onDelete }: BookCardProps) => {
           <div className="text-sm text-muted-foreground pt-2">
             <div className="flex items-center gap-2">
               <BookOpen className="h-4 w-4 flex-shrink-0" />
-              <span>{book.total_pages} pages</span>
+              <span>{book.total_pages} páginas</span>
             </div>
           </div>
         )}
@@ -60,19 +66,19 @@ export const BookCard = ({ book, onClick, onDelete }: BookCardProps) => {
             {book.total_pages && (
               <div className="flex items-center gap-2">
                 <BookOpen className="h-4 w-4 flex-shrink-0" />
-                <span>{book.total_pages} pages</span>
+                <span>{book.total_pages} páginas</span>
               </div>
             )}
             {book.start_date && (
               <div className="flex items-center gap-2">
                 <CalendarDays className="h-4 w-4 flex-shrink-0" />
-                <span>Started: {new Date(book.start_date).toLocaleDateString()}</span>
+                <span>Empezado: {new Date(book.start_date).toLocaleDateString()}</span>
               </div>
             )}
             {book.end_date && (
               <div className="flex items-center gap-2">
                 <CalendarDays className="h-4 w-4 flex-shrink-0" />
-                <span>Finished: {new Date(book.end_date).toLocaleDateString()}</span>
+                <span>Terminado: {new Date(book.end_date).toLocaleDateString()}</span>
               </div>
             )}
           </div>
@@ -82,9 +88,9 @@ export const BookCard = ({ book, onClick, onDelete }: BookCardProps) => {
       <CardFooter className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Badge variant={statusVariantMap[book.status] || 'outline'}>
-            {book.status.replace('-', ' ')}
+            {statusTextMap[book.status] || book.status}
           </Badge>
-          {book.notes && <MessageSquare className="h-4 w-4 text-muted-foreground" title="This book has notes" />}
+          {book.notes && <MessageSquare className="h-4 w-4 text-muted-foreground" title="Este libro tiene notas" />}
         </div>
         <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleDeleteClick}>
           <Trash2 className="h-4 w-4 text-destructive" />
