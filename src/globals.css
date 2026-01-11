@@ -31,7 +31,7 @@
     --sidebar-accent-foreground: 113 40% 25%;
     --sidebar-border: 30 20% 88%;
     --sidebar-ring: 113 40% 25%;
-    --radius: 10%; /* Actualizado: Redondez de los bordes al 10% */
+    --radius: 0.75rem; /* Actualizado: Redondez de los bordes a 0.75rem para mayor precisión */
   }
 
   .dark {
