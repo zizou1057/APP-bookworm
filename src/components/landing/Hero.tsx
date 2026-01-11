@@ -21,7 +21,7 @@ export const Hero = () => {
       </div>
       <div className="flex-1 flex justify-center">
         <img
-          src="/placeholder.svg"
+          src="/bookworm-screenshot.png" {/* Aquí he cambiado la ruta de la imagen */}
           alt="BookWorm App Screenshot"
           className="rounded-lg shadow-xl mt-12"
           width={800}
