@@ -5,20 +5,20 @@ const detailsData = [
   {
     title: "Registra Cada Detalle",
     description: "Registra tu progreso de lectura con precisión. Anota la página en la que estás, escribe tus pensamientos a medida que surgen y guarda esas citas inolvidables. BookWorm mantiene todas tus notas de lectura organizadas.",
-    image: "/placeholder.svg",
+    image: "/images/photo-1709486973903-ba0f098a28bf.jpg",
     reverse: false,
   },
   {
     badge: "Con tecnología IA",
     title: "Descubre Tu Próximo Favorito",
     description: "Nuestro motor de recomendación inteligente te ayuda a encontrar libros que te encantarán. Basándonos en tu historial de lectura y géneros favoritos, te sugeriremos joyas ocultas y nuevos lanzamientos populares.",
-    image: "/placeholder.svg",
+    image: "/images/photo-1709486973903-ba0f098a28bf.jpg",
     reverse: true,
   },
   {
     title: "Visualiza Tu Viaje de Lectura",
     description: "Observa cómo tus hábitos de lectura cobran vida con hermosos gráficos y estadísticas. Registra cuántos libros has leído, tu ritmo y qué géneros exploras más a lo largo del tiempo.",
-    image: "/placeholder.svg",
+    image: "/images/photo-1709486973903-ba0f098a28bf.jpg",
     reverse: false,
   },
 ];
@@ -47,7 +47,7 @@ export const Details = () => {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="rounded-lg shadow-lg w-full max-w-md"
+                  className="rounded-lg shadow-lg w-full max-w-md object-cover h-auto"
                 />
               </div>
               <div className="flex-1 space-y-4 text-center md:text-left">
