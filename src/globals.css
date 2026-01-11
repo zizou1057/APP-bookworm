@@ -4,44 +4,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* White */
-    --foreground: 81 29% 17%; /* Deep Green */
-
-    --card: 0 0% 100%; /* White */
-    --card-foreground: 81 29% 17%;
-
-    --popover: 0 0% 100%; /* White */
-    --popover-foreground: 81 29% 17%;
-
-    --primary: 71 26% 33%; /* Marine Green */
-    --primary-foreground: 55 89% 94%; /* Barium Yellow */
-
-    --secondary: 35 56% 62%; /* Sepia */
-    --secondary-foreground: 81 29% 17%; /* Deep Green */
-
-    --muted: 35 56% 90%; /* Lighter Sepia */
-    --muted-foreground: 81 29% 35%; /* Lighter Deep Green */
-
-    --accent: 29 55% 45%; /* Leather */
-    --accent-foreground: 55 89% 94%; /* Barium Yellow */
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 55 89% 94%;
-
-    --border: 35 56% 85%; /* Light Sepia */
-    --input: 35 56% 85%; /* Light Sepia */
-    --ring: 71 26% 33%; /* Marine Green */
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 55 89% 97%;
-    --sidebar-foreground: 81 29% 17%;
-    --sidebar-primary: 71 26% 33%;
-    --sidebar-primary-foreground: 55 89% 94%;
-    --sidebar-accent: 35 56% 90%;
-    --sidebar-accent-foreground: 81 29% 17%;
-    --sidebar-border: 35 56% 85%;
-    --sidebar-ring: 71 26% 33%;
+    --background: 0 0% 100%;
+    --foreground: 87 15% 11%;          /* Verde Musgo Profundo (Casi negro) */
+    --card: 0 0% 100%;                 /* Blanco puro para que las tarjetas resalten */
+    --card-foreground: 87 15% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 87 15% 11%;
+    --primary: 113 40% 25%;            /* Verde Bosque Profundo (Identidad visual) */
+    --primary-foreground: 52 70% 97%;   /* Texto crema sobre botones verdes */
+    --secondary: 30 55% 92%;           /* Arena suave (Para elementos sutiles) */
+    --secondary-foreground: 87 15% 11%;
+    --muted: 52 30% 92%;
+    --muted-foreground: 87 15% 35%;
+    --accent: 30 55% 64%;              /* Canela/Cuero (Para resaltar detalles) */
+    --accent-foreground: 52 70% 97%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 52 70% 97%;
+    --border: 30 20% 85%;              /* Borde tierra muy suave */
+    --input: 30 20% 85%;
+    --ring: 113 40% 25%;
+    --sidebar-background: 52 60% 95%;  /* Sidebar ligeramente más oscuro que el fondo */
+    --sidebar-foreground: 87 15% 11%;
+    --sidebar-primary: 113 40% 25%;
+    --sidebar-primary-foreground: 52 70% 97%;
+    --sidebar-accent: 30 55% 90%;
+    --sidebar-accent-foreground: 113 40% 25%;
+    --sidebar-border: 30 20% 88%;
+    --sidebar-ring: 113 40% 25%;
   }
 
   .dark {
