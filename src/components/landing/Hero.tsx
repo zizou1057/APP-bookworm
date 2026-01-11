@@ -23,7 +23,7 @@ export const Hero = () => {
       </div>
       <div className="flex-1 flex justify-center">
         <img
-          src="/bookworm-screenshot.png"
+          src="/images/Libros-interesantes-para-leer-gratis.webp"
           alt="BookWorm App Screenshot"
           className="rounded-lg shadow-xl mt-12"
           width={800}
