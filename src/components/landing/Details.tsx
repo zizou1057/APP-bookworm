@@ -12,7 +12,7 @@ const detailsData = [
     badge: "Con tecnología IA",
     title: "Descubre Tu Próximo Favorito",
     description: "Nuestro motor de recomendación inteligente te ayuda a encontrar libros que te encantarán. Basándonos en tu historial de lectura y géneros favoritos, te sugeriremos joyas ocultas y nuevos lanzamientos populares.",
-    image: "/placeholder.svg", // Usando un placeholder para el segundo elemento
+    image: "/images/photo-1709486973903-ba0f098a28bf.jpg", // Actualizado con la nueva imagen
     reverse: true,
   },
   {
