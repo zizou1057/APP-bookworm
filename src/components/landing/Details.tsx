@@ -6,7 +6,7 @@ const detailsData = [
     title: "Registra Cada Detalle",
     description:
       "Registra tu progreso de lectura con precisión. Anota la página en la que estás, escribe tus pensamientos a medida que surgen y guarda esas citas inolvidables. BookWorm mantiene todas tus notas de lectura organizadas.",
-    image: "/images/mujer-joven-estudiando-biblioteca_1303-19014.avif", // Usando la nueva imagen adjunta aquí
+    image: "/images/mujer-joven-estudiando-biblioteca_1303-19014.avif",
     reverse: false,
   },
   {
@@ -14,14 +14,14 @@ const detailsData = [
     title: "Descubre Tu Próximo Favorito",
     description:
       "Nuestro motor de recomendación inteligente te ayuda a encontrar libros que te encantarán. Basándonos en tu historial de lectura y géneros favoritos, te sugeriremos joyas ocultas y nuevos lanzamientos populares.",
-    image: "/images/photo-1709486973903-ba0f098a28bf.jpg", // Actualizado con la nueva imagen
+    image: "/images/photo-1709486973903-ba0f098a28bf.jpg",
     reverse: true,
   },
   {
     title: "Visualiza Tu Viaje de Lectura",
     description:
       "Observa cómo tus hábitos de lectura cobran vida con hermosos gráficos y estadísticas. Registra cuántos libros has leído, tu ritmo y qué géneros exploras más a lo largo del tiempo.",
-    image: "/placeholder.svg", // Usando un placeholder para el tercer elemento
+    image: "/placeholder.svg",
     reverse: false,
   },
 ];
@@ -52,6 +52,10 @@ export const Details = () => {
                   src={item.image}
                   alt={item.title}
                   className="rounded-lg shadow-lg w-full max-w-md object-cover h-auto"
+                  onError={(e) => {
+                    // Fallback to placeholder if image fails to load
+                    e.currentTarget.src = "/placeholder.svg";
+                  }}
                 />
               </div>
               <div className="flex-1 space-y-4 text-center md:text-left">
