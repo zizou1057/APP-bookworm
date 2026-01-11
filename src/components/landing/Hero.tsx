@@ -1,3 +1,4 @@
+/** @jsxImportSource react */
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -22,7 +23,7 @@ export const Hero = () => {
       </div>
       <div className="flex-1 flex justify-center">
         <img
-          src="/bookworm-screenshot.png" {/* Aquí he cambiado la ruta de la imagen */}
+          src="/bookworm-screenshot.png"
           alt="BookWorm App Screenshot"
           className="rounded-lg shadow-xl mt-12"
           width={800}
