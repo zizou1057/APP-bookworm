@@ -5,7 +5,7 @@ const detailsData = [
   {
     title: "Registra Cada Detalle",
     description: "Registra tu progreso de lectura con precisión. Anota la página en la que estás, escribe tus pensamientos a medida que surgen y guarda esas citas inolvidables. BookWorm mantiene todas tus notas de lectura organizadas.",
-    image: "/images/photo-1709486973903-ba0f098a28bf.jpg", // Usando la imagen adjunta aquí
+    image: "/images/mujer-joven-estudiando-biblioteca_1303-19014.avif", // Usando la nueva imagen adjunta aquí
     reverse: false,
   },
   {
