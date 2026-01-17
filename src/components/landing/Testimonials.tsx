@@ -3,25 +3,25 @@ const testimonialsData = [
     quote: "BookWorm ha cambiado por completo mi forma de leer. Nunca ha sido tan fácil hacer un seguimiento de mi progreso y mis notas.",
     name: "Alex Johnson",
     title: "Lector Ávido",
-    avatar: "/testimonial-user.jpg", // Updated image path
+    avatar: "/images/TESTIMONIO-UNO.png", // Updated image path
   },
   {
     quote: "¡Las recomendaciones de la IA son perfectas! He descubierto muchísimos autores y géneros nuevos que no habría encontrado de otra manera.",
     name: "Samantha Lee",
     title: "Presidenta del Club de Lectura",
-    avatar: "/testimonial-user.jpg", // Updated image path
+    avatar: "/testimonial-user.jpg",
   },
   {
     quote: "Me encantan las funciones de comunidad. Comentar libros con otros lectores añade una dimensión completamente nueva a mi experiencia de lectura.",
     name: "Michael Chen",
     title: "Estudiante de Literatura",
-    avatar: "/testimonial-user.jpg", // Updated image path
+    avatar: "/testimonial-user.jpg",
   },
   {
     quote: "Como profesional ocupado, BookWorm me ayuda a aprovechar al máximo mi tiempo de lectura. Es simple, intuitivo y potente.",
     name: "Jessica Williams",
     title: "CEO, Soluciones Tecnológicas",
-    avatar: "/testimonial-user.jpg", // Updated image path
+    avatar: "/testimonial-user.jpg",
   },
 ];
 
