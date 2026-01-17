@@ -1,5 +1,8 @@
+/** @jsxImportSource react */
+import React from 'react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom"; // Importamos Link
 
 const detailsData = [
   {
@@ -62,9 +65,11 @@ export const Details = () => {
                 {item.badge && <Badge variant="secondary">{item.badge}</Badge>}
                 <h3 className="text-2xl md:text-3xl font-bold">{item.title}</h3>
                 <p className="text-muted-foreground">{item.description}</p>
-                <Button variant="link" className="p-0 h-auto text-base">
-                  Saber Más
-                </Button>
+                <Link to="/signup"> {/* Envolvemos el botón con Link */}
+                  <Button variant="link" className="p-0 h-auto text-base">
+                    Saber Más
+                  </Button>
+                </Link>
               </div>
             </div>
           ))}
