@@ -6,7 +6,7 @@ const detailsData = [
     title: "Registra Cada Detalle",
     description:
       "Registra tu progreso de lectura con precisión. Anota la página en la que estás, escribe tus pensamientos a medida que surgen y guarda esas citas inolvidables. BookWorm mantiene todas tus notas de lectura organizadas.",
-    image: "/images/passenger-reading-travelling-by-tram.jpg",
+    image: "/images/photo-1709486973903-ba0f098a28bf.jpg", // Updated image path
     reverse: false,
   },
   {
@@ -21,7 +21,7 @@ const detailsData = [
     title: "Visualiza Tu Viaje de Lectura",
     description:
       "Observa cómo tus hábitos de lectura cobran vida con hermosos gráficos y estadísticas. Registra cuántos libros has leído, tu ritmo y qué géneros exploras más a lo largo del tiempo.",
-    image: "/images/photo-1709486973903-ba0f098a28bf.jpg", // Updated image path
+    image: "/images/photo-1709486973903-ba0f098a28bf.jpg",
     reverse: false,
   },
 ];
