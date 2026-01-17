@@ -16,7 +16,7 @@ export const Hero = () => {
           </p>
         </div>
         <div className="mt-8 flex justify-center gap-4">
-          <Button size="lg" asChild>
+          <Button size="lg" asChild className="h-14 px-10 text-lg"> {/* Ajustado el tamaño del botón */}
             <Link to="/login">Comienza Gratis</Link>
           </Button>
         </div>
