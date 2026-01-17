@@ -3,7 +3,7 @@ const testimonialsData = [
     quote: "BookWorm ha cambiado por completo mi forma de leer. Nunca ha sido tan fácil hacer un seguimiento de mi progreso y mis notas.",
     name: "Alex Johnson",
     title: "Lector Ávido",
-    avatar: "/placeholder-user.jpg",
+    avatar: "/images/testimonial-man.jpg", // Usando la nueva imagen
   },
   {
     quote: "¡Las recomendaciones de la IA son perfectas! He descubierto muchísimos autores y géneros nuevos que no habría encontrado de otra manera.",
