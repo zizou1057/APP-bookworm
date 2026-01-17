@@ -21,7 +21,7 @@ const detailsData = [
     title: "Visualiza Tu Viaje de Lectura",
     description:
       "Observa cómo tus hábitos de lectura cobran vida con hermosos gráficos y estadísticas. Registra cuántos libros has leído, tu ritmo y qué géneros exploras más a lo largo del tiempo.",
-    image: "/images/photo-1709486973903-ba0f098a28bf.jpg",
+    image: "/images/passenger-reading-travelling-by-tram.jpg",
     reverse: false,
   },
 ];
