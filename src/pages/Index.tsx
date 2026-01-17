@@ -4,6 +4,7 @@ import { Features } from "@/components/landing/Features";
 import { Footer } from "@/components/landing/Footer";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { Details } from "@/components/landing/Details";
+import { CallToAction } from "@/components/landing/CallToAction"; // Import the new component
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
         <Features />
         <Details />
         <Testimonials />
+        <CallToAction /> {/* Add the new CallToAction component here */}
       </main>
       <Footer />
     </div>
